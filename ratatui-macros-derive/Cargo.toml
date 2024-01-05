@@ -1,0 +1,17 @@
+[package]
+name = "ratatui-macros-derive"
+version = "0.1.1"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+proc-macro-error = "1.0.4"
+proc-macro2 = "1.0.75"
+quote = "1.0.35"
+ratatui = "0.25.0"
+syn = "2.0.48"
+
+[lib]
+proc-macro = true
+

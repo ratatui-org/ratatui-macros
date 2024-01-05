@@ -11,9 +11,16 @@ keywords = ["macros", "tui", "ui", "layout", "ratatui"]
 categories = ["tui", "macro"]
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+[workspace]
+members = ["ratatui-macros-derive"]
 
 [dependencies]
 ratatui = "0.25.0"
+ratatui-macros-derive = { version = "0.1.1", path = "ratatui-macros-derive" }
 
 [dev-dependencies]
 trybuild = { version = "1.0.88", features = ["diff"] }
+
+[[bin]]
+name = "ratatui-macros"
+path = "main.rs"
