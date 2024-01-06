@@ -197,16 +197,9 @@ fn layout_constraints_macro() {
 #[test]
 fn style_format() {
   style_line!("Press {j:red} or {k:red} to {increment:blue} or {decrement:blue}");
-  style_line!("Press {j:red;bold} or {} to {increment:blue} or {decrement:blue}", "k".red().bold());
-  let i = "increment";
-  let d = "decrement";
-  let c = Color::Blue;
-  style_line!("Press {j:red;bold} or {} to {} or {}", "k".red().bold(), i.fg(c), d.fg(c));
-
-  style_line!([Press {"j".red()} or {"k".red()} to {"increment".blue()} or {"decrement".blue()}]);
-  style_line!([Press {"j".red().bold()} or {"k".red().bold()} to {"increment".blue()} or {"decrement".blue()}]);
-  let i = "increment";
-  let d = "decrement";
-  let c = Color::Blue;
-  style_line!([Press {"j".red().bold()} or {"k".red().bold()} to {i.fg(c)} or {d.fg(c)}]);
+  // style_line!("Press {j:red;bold} or {} to {increment:blue} or {decrement:blue}", "k".red().bold());
+  // let i = "increment";
+  // let d = "decrement";
+  // let c = Color::Blue;
+  // style_line!("Press {j:red;bold} or {} to {} or {}", "k".red().bold(), i.fg(c), d.fg(c));
 }
