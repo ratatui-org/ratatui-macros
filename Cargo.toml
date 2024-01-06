@@ -12,7 +12,7 @@ categories = ["tui", "macro"]
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 [workspace]
-members = ["ratatui-macros-derive"]
+members = [ "ratatui-macros-core", "ratatui-macros-derive"]
 
 [dependencies]
 ratatui = "0.25.0"
