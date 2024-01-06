@@ -68,7 +68,7 @@ fn parse_input(input: &str) -> Vec<Segment> {
           segments.push(Segment::Text(current.clone()));
           current.clear();
         }
-        let mut var_name = String::new();
+        let mut text = String::new();
         let mut fg = String::new();
         let mut bg = String::new();
         let mut in_fg = false;
@@ -87,22 +87,16 @@ fn parse_input(input: &str) -> Vec<Segment> {
               if in_fg {
                 fg.push(next);
               } else {
-                var_name.push(next);
+                text.push(next);
               }
               chars.next();
             },
           }
         }
         if in_fg {
-          segments.push(Segment::StyledText {
-            text: var_name.clone(),
-            fg: fg.clone(),
-            bg: bg.clone(),
-            bold: false,
-            italics: false,
-          });
+          segments.push(Segment::StyledText { text, fg: fg.clone(), bg: bg.clone(), bold: false, italics: false });
         } else {
-          segments.push(Segment::Text(var_name.clone()));
+          segments.push(Segment::Text(text));
         }
       },
       _ => current.push(ch),
@@ -121,6 +115,6 @@ mod tests {
 
   #[test]
   fn test_style_line() {
-    let result = parse_input("");
+    let result = parse_input("Press {j:red} or {k:red} to {increment:blue} or {decrement:blue}");
   }
 }
