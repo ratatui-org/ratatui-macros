@@ -1,5 +1,7 @@
 use ratatui::prelude::*;
 use ratatui_macros::{constraints, horizontal, vertical};
+use ratatui::prelude::*;
+use ratatui_macros_derive::style_line;
 
 #[test]
 fn layout_constraints_macro() {
@@ -190,4 +192,21 @@ fn layout_constraints_macro() {
   let [a, b] = constraints!([== 1/2; 2]).collect::<Vec<Constraint>>().try_into().unwrap();
   assert_eq!(a, Constraint::Ratio(1, 2));
   assert_eq!(b, Constraint::Ratio(1, 2));
+}
+
+#[test]
+fn style_format() {
+  style_line!("Press {j:red} or {k:red} to {increment:blue} or {decrement:blue}");
+  style_line!("Press {j:red;bold} or {} to {increment:blue} or {decrement:blue}", "k".red().bold());
+  let i = "increment";
+  let d = "decrement";
+  let c = Color::Blue;
+  style_line!("Press {j:red;bold} or {} to {} or {}", "k".red().bold(), i.fg(c), d.fg(c));
+
+  style_line!([Press {"j".red()} or {"k".red()} to {"increment".blue()} or {"decrement".blue()}]);
+  style_line!([Press {"j".red().bold()} or {"k".red().bold()} to {"increment".blue()} or {"decrement".blue()}]);
+  let i = "increment";
+  let d = "decrement";
+  let c = Color::Blue;
+  style_line!([Press {"j".red().bold()} or {"k".red().bold()} to {i.fg(c)} or {d.fg(c)}]);
 }
